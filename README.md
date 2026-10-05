@@ -1,4 +1,3 @@
-Absolutely. Here's the **full README**, kept clean and professional, with enough detail for a GitHub research/project repository but without turning it into a report.
 
 ```markdown
 # Data-Driven Optimal Placement and Sizing of Solar Cold Storage for Perishable Crops in Karnataka Using Machine Learning

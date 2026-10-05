@@ -23,12 +23,17 @@ The framework combines adaptive forecasting, Arrhenius-based shelf-life estimati
 
 ## Data Sources
 
-| Source | Data Used |
-|---|---|
-| **AGMARKNET** | Crop arrivals and market prices |
-| **NASA POWER** | Temperature and solar irradiance |
-| **ICAR-CIPHET** | Crop-specific post-harvest loss percentages |
-| **NHB** | Existing cold-storage infrastructure |
+### AGMARKNET
+Used for historical crop arrivals and market price information.
+
+### NASA POWER
+Used for temperature and solar irradiance data.
+
+### ICAR-CIPHET
+Used for crop-specific post-harvest loss percentages.
+
+### National Horticulture Board (NHB)
+Used for existing cold-storage infrastructure information.
 
 ## Methodology
 
@@ -127,13 +132,6 @@ solar-cold-storage-karnataka/
 └── requirements.txt
 ```
 
-## Documentation
-
-- [Project Overview](docs/project_overview.md)
-- [Methodology](docs/methodology.md)
-- [Results](docs/results.md)
-- [Data Dictionary](data/data_dictionary.md)
-- [System Architecture](architecture/architecture.md)
 
 ## Technologies
 

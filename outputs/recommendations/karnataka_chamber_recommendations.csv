@@ -1,0 +1,73 @@
+district,chamber,storage_temp_c,crops_stored,units_needed,capacity_mt,panels_per_unit,peak_months,tonnes_at_risk
+Kolar,Warm (13-15°C),13.0,"banana, mango, tomato",14,7000,793,"FEB, JUL",12157.8
+Kolar,Cold (1-3°C),1.0,"grapes, onion",2,1000,1574,"JUN, AUG",36.1
+Kolar,Cool (4-6°C),5.0,"pomegranate, potato",2,1000,1227,"JUN, JAN",57.6
+Chikkaballapura,Warm (13-15°C),13.0,"mango, tomato",3,1500,822,"JUL, JUN",1339.4
+Chikkaballapura,Cold (1-3°C),1.0,onion,1,500,1462,APR,4.3
+Chikkaballapura,Cool (4-6°C),5.0,potato,1,500,1256,MAY,15.6
+Ramanagara,Warm (13-15°C),13.0,"banana, mango, tomato",4,2000,830,"APR, MAY, JAN",1545.3
+Ramanagara,Cold (1-3°C),1.0,onion,1,500,1536,JUN,9.0
+Ramanagara,Cool (4-6°C),5.0,potato,1,500,1223,APR,1.6
+Hassan,Warm (13-15°C),13.0,"banana, tomato",2,1000,782,"MAY, JUL",176.9
+Hassan,Cold (1-3°C),1.0,onion,1,500,1618,OCT,87.3
+Hassan,Cool (4-6°C),5.0,potato,1,500,1186,MAY,191.4
+Shivamogga,Warm (13-15°C),13.0,tomato,1,500,878,JUN,116.5
+Shivamogga,Cold (1-3°C),1.0,onion,1,500,1668,MAY,5.3
+Shivamogga,Cool (4-6°C),5.0,potato,1,500,1134,MAR,1.6
+Belagavi,Warm (13-15°C),13.0,tomato,1,500,626,NOV,60.6
+Belagavi,Cold (1-3°C),1.0,onion,1,500,1655,OCT,362.8
+Belagavi,Cool (4-6°C),5.0,potato,1,500,1198,MAR,103.8
+Vijayapura,Cold (1-3°C),1.0,onion,1,500,1704,APR,324.7
+Dharwad,Warm (13-15°C),13.0,tomato,1,500,921,JUL,7.6
+Dharwad,Cold (1-3°C),1.0,onion,1,500,1667,OCT,407.7
+Dharwad,Cool (4-6°C),5.0,potato,1,500,1227,MAR,99.0
+Raichur,Cold (1-3°C),1.0,onion,1,500,1612,MAR,344.1
+Chikkamagaluru,Warm (13-15°C),13.0,tomato,1,500,993,JUL,103.9
+Chikkamagaluru,Cold (1-3°C),1.0,onion,1,500,1625,OCT,16.5
+Chikkamagaluru,Cool (4-6°C),5.0,potato,1,500,1330,SEP,3.0
+Mysuru,Warm (13-15°C),13.0,"banana, mango, tomato",3,1500,823,"FEB, MAY, NOV",64.3
+Mysuru,Cold (1-3°C),1.0,"grapes, onion",2,1000,1408,"MAR, JAN",53.4
+Mysuru,Cool (4-6°C),5.0,"pomegranate, potato",2,1000,1427,"AUG, OCT",44.5
+Gadag,Warm (13-15°C),13.0,tomato,1,500,1002,JUL,3.0
+Gadag,Cold (1-3°C),1.0,onion,1,500,1689,NOV,528.5
+Gadag,Cool (4-6°C),5.0,potato,1,500,1663,JUL,0.5
+Uttara Kannada,Warm (13-15°C),13.0,"banana, mango",2,1000,889,"FEB, MAY",67.4
+Chamarajanagar,Warm (13-15°C),13.0,tomato,1,500,806,AUG,59.2
+Chamarajanagar,Cold (1-3°C),1.0,onion,1,500,1583,APR,6.5
+Chamarajanagar,Cool (4-6°C),5.0,potato,1,500,1397,OCT,4.1
+Kalaburagi,Warm (13-15°C),13.0,"banana, mango, tomato",3,1500,1058,"JAN, MAY, OCT",37.3
+Kalaburagi,Cold (1-3°C),1.0,"grapes, onion",2,1000,1696,"APR, MAR",44.0
+Kalaburagi,Cool (4-6°C),5.0,"pomegranate, potato",2,1000,1517,"MAR, AUG",9.4
+Dakshina Kannada,Warm (13-15°C),13.0,"banana, tomato",2,1000,1251,"FEB, JUL",24.2
+Dakshina Kannada,Cold (1-3°C),1.0,"grapes, onion",2,1000,2180,JUN,2.8
+Dakshina Kannada,Cool (4-6°C),5.0,"pomegranate, potato",2,1000,1834,JUN,20.0
+Tumakuru,Warm (13-15°C),13.0,"banana, mango, tomato",3,1500,841,"MAR, JUN, JUL",60.2
+Tumakuru,Cold (1-3°C),1.0,onion,1,500,1536,MAY,4.6
+Tumakuru,Cool (4-6°C),5.0,potato,1,500,1238,MAY,1.4
+Mandya,Warm (13-15°C),13.0,"banana, tomato",2,1000,767,"FEB, JUN",48.0
+Mandya,Cold (1-3°C),1.0,onion,1,500,1432,MAR,0.8
+Mandya,Cool (4-6°C),5.0,potato,1,500,1160,MAR,0.6
+Udupi,Warm (13-15°C),13.0,"banana, tomato",2,1000,749,"APR, JAN",21.8
+Udupi,Cold (1-3°C),1.0,"grapes, onion",2,1000,1610,"MAY, APR",27.6
+Udupi,Cool (4-6°C),5.0,"pomegranate, potato",2,1000,1657,"APR, JUN",9.3
+Davangere,Warm (13-15°C),13.0,"banana, mango, tomato",3,1500,847,"AUG, MAY, JAN",18.1
+Davangere,Cold (1-3°C),1.0,"grapes, onion",2,1000,1596,"MAR, DEC",136.6
+Davangere,Cool (4-6°C),5.0,"pomegranate, potato",2,1000,1787,"JUL, FEB",6.0
+Vijayanagara,Warm (13-15°C),13.0,"banana, tomato",2,1000,847,"APR, NOV",7.9
+Vijayanagara,Cold (1-3°C),1.0,onion,1,500,1618,MAY,12.8
+Vijayanagara,Cool (4-6°C),5.0,potato,1,500,1313,MAY,4.9
+Haveri,Warm (13-15°C),13.0,"banana, tomato",2,1000,821,"MAY, OCT",3.2
+Haveri,Cold (1-3°C),1.0,onion,1,500,1483,MAR,37.7
+Haveri,Cool (4-6°C),5.0,potato,1,500,1752,JUL,0.1
+Bagalkot,Cold (1-3°C),1.0,onion,1,500,1707,NOV,86.2
+Ballari,Cold (1-3°C),1.0,onion,1,500,1564,MAR,17.9
+Ballari,Cool (4-6°C),5.0,potato,1,500,1273,MAR,20.0
+Koppal,Warm (13-15°C),13.0,tomato,1,500,903,AUG,7.2
+Koppal,Cold (1-3°C),1.0,onion,1,500,1813,AUG,6.4
+Koppal,Cool (4-6°C),5.0,potato,1,500,1454,AUG,5.8
+Chitradurga,Warm (13-15°C),13.0,tomato,1,500,769,SEP,1.2
+Chitradurga,Cold (1-3°C),1.0,onion,1,500,1675,SEP,5.3
+Bidar,Cold (1-3°C),1.0,onion,1,500,1559,OCT,5.7
+Bidar,Cool (4-6°C),5.0,potato,1,500,1203,NOV,2.4
+Kodagu,Cold (1-3°C),1.0,onion,1,500,1677,OCT,0.3
+Kodagu,Cool (4-6°C),5.0,potato,1,500,1511,JUN,0.6

@@ -1,0 +1,29 @@
+district,combined_urgency_raw,total_units,crops_present,peak_crop,best_mandi,TA_PUS_Score
+Kolar,51311.4017,18,"banana, grapes, mango, onion, pomegranate, potato, tomato",tomato,Kolar APMC,1.0
+Chikkaballapura,6886.0691,5,"mango, onion, potato, tomato",tomato,Chintamani APMC,0.9643
+Ramanagara,5586.434700000001,6,"banana, mango, onion, potato, tomato",mango,Channapatna APMC,0.9286
+Hassan,930.0,4,"banana, onion, potato, tomato",tomato,Hassan APMC,0.8929
+Shivamogga,602.5617000000001,3,"onion, potato, tomato",tomato,Shimoga APMC,0.8571
+Belagavi,565.7104,3,"onion, potato, tomato",onion,Belgaum APMC,0.8214
+Vijayapura,462.1735,1,onion,onion,Vijayapura APMC,0.7857
+Dharwad,457.097,3,"onion, potato, tomato",onion,Hubballi APMC,0.75
+Raichur,426.6505,1,onion,onion,Raichur APMC,0.7143
+Chikkamagaluru,387.8128,3,"onion, potato, tomato",tomato,Chikkamagaluru APMC,0.6786
+Mysuru,365.2772,7,"banana, grapes, mango, onion, pomegranate, potato, tomato",mango,Mysuru APMC,0.6429
+Gadag,336.5065,3,"onion, potato, tomato",onion,Gadag APMC,0.6071
+Uttara Kannada,279.1406,2,"banana, mango",mango,Haliyala APMC,0.5714
+Chamarajanagar,274.5736,3,"onion, potato, tomato",tomato,Gundlupet APMC,0.5357
+Kalaburagi,211.7529,7,"banana, grapes, mango, onion, pomegranate, potato, tomato",tomato,Kalaburagi APMC,0.5
+Dakshina Kannada,210.68810000000002,6,"banana, grapes, onion, pomegranate, potato, tomato",tomato,Mangaluru APMC,0.4643
+Tumakuru,195.1042,5,"banana, mango, onion, potato, tomato",mango,Gubbi APMC,0.4286
+Mandya,188.4722,4,"banana, onion, potato, tomato",banana,Mandya APMC,0.3929
+Udupi,178.8069,6,"banana, grapes, onion, pomegranate, potato, tomato",banana,Udupi APMC,0.3571
+Davangere,163.5019,7,"banana, grapes, mango, onion, pomegranate, potato, tomato",onion,Davangere APMC,0.3214
+Vijayanagara,59.2304,4,"banana, onion, potato, tomato",tomato,Hospet APMC,0.2857
+Haveri,58.5231,4,"banana, onion, potato, tomato",onion,Ranebennur APMC,0.25
+Bagalkot,54.3292,1,onion,onion,Bagalkot APMC,0.2143
+Ballari,54.0383,2,"onion, potato",potato,Ballari APMC,0.1786
+Koppal,53.9498,3,"onion, potato, tomato",tomato,Koppal APMC,0.1429
+Chitradurga,9.277,2,"onion, tomato",tomato,Holalkere APMC,0.1071
+Bidar,5.3975,2,"onion, potato",onion,Humanabad APMC,0.0714
+Kodagu,0.7904,2,"onion, potato",potato,Gonikappal APMC,0.0357

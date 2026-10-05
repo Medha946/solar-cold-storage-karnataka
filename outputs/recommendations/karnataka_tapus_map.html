@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d7300aad30b4a61dea6011fb0709c9ec {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 30px; left: 30px; z-index: 1000;
+     background-color: white; padding: 15px; border-radius: 10px;
+     border: 2px solid #ccc; font-size: 12px; font-family: Arial;
+     box-shadow: 3px 3px 6px rgba(0,0,0,0.3); min-width: 220px;">
+
+<b style="font-size:14px;">Karnataka Cold Storage</b><br>
+<b>TA-PUS Urgency Map</b><br>
+<i style="font-size:10px;">Circle size = urgency level</i><br><br>
+
+<b>Urgency Level:</b><br>
+<span style="color:#d73027">●</span> Critical (&gt;0.80)<br>
+<span style="color:#fc8d59">●</span> High (0.50–0.80)<br>
+<span style="color:#fee08b">●</span> Moderate (0.20–0.50)<br>
+<span style="color:#91cf60">●</span> Low (0.05–0.20)<br>
+<span style="color:#1a9850">●</span> Very Low (&lt;0.05)<br><br>
+
+<b>Chamber Types:</b><br>
+🔴 Warm (13–15°C): Tomato, Mango, Banana<br>
+🟡 Cool (4–6°C): Potato, Pomegranate<br>
+🔵 Cold (1–3°C): Grapes, Onion<br><br>
+
+<b>Click any district for:</b><br>
+→ TA-PUS score<br>
+→ Multi-chamber recommendation<br>
+→ Solar panels needed<br>
+→ Priority mandi<br>
+</div>
+    
+<div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
+     z-index: 1000; background: white; padding: 10px 20px;
+     border-radius: 8px; border: 2px solid #333;
+     font-family: Arial; font-size: 14px; font-weight: bold;
+     box-shadow: 3px 3px 6px rgba(0,0,0,0.3);">
+     Karnataka Solar Cold Storage Placement —
+     Multi-Crop TA-PUS Urgency Map (2021–2026)
+</div>
+    
+            <div class="folium-map" id="map_d7300aad30b4a61dea6011fb0709c9ec" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d7300aad30b4a61dea6011fb0709c9ec = L.map(
+                "map_d7300aad30b4a61dea6011fb0709c9ec",
+                {
+                    center: [14.5, 76.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e97ed803a7021969f2cdc166b0086a61 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e97ed803a7021969f2cdc166b0086a61.addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var circle_marker_c9b95c7abca0a19f6a5513688a3f98e9 = L.circleMarker(
+                [16.1691, 75.6966],
+                {"bubblingMouseEvents": true, "color": "#fee08b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_7aafa721955f8c22be4c2dffab583bc6 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_8ce7ba70c13a8822fb0beeabb027af96 = $(`<div id="html_8ce7ba70c13a8822fb0beeabb027af96" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fee08b'>Bagalkot</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.2143       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fee08b; font-weight:bold'>MODERATE</span><br>       <b>Total units needed:</b> 1<br>       <b>Crops with data:</b> onion<br>       <b>Priority mandi:</b> Bagalkot APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1707 × 500W</td><td>NOV</td></tr>         </table>     </div></div>`)[0];
+                popup_7aafa721955f8c22be4c2dffab583bc6.setContent(html_8ce7ba70c13a8822fb0beeabb027af96);
+            
+        
+
+        circle_marker_c9b95c7abca0a19f6a5513688a3f98e9.bindPopup(popup_7aafa721955f8c22be4c2dffab583bc6)
+        ;
+
+        
+    
+    
+            circle_marker_c9b95c7abca0a19f6a5513688a3f98e9.bindTooltip(
+                `<div>
+                     Bagalkot — TA-PUS: 0.2143 (MODERATE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_dc3ee952082cbe8073834bf577c38fe0 = L.marker(
+                [16.3191, 75.6966],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_fee90fa77f3564a7765e893a26a91d0a = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eBagalkot\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_dc3ee952082cbe8073834bf577c38fe0.setIcon(div_icon_fee90fa77f3564a7765e893a26a91d0a);
+            
+    
+            var circle_marker_ace0446e1a6d5537f0af5f151108e845 = L.circleMarker(
+                [15.1394, 76.9214],
+                {"bubblingMouseEvents": true, "color": "#91cf60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#91cf60", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_c491462bab1a67b7d9ba1785c7eaa59b = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_3297d39bbf4d6c0c89c3c0e823c43131 = $(`<div id="html_3297d39bbf4d6c0c89c3c0e823c43131" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#91cf60'>Ballari</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.1786       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#91cf60; font-weight:bold'>LOW</span><br>       <b>Total units needed:</b> 2<br>       <b>Crops with data:</b> onion, potato<br>       <b>Priority mandi:</b> Ballari APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1564 × 500W</td><td>MAR</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1273 × 500W</td><td>MAR</td></tr>         </table>     </div></div>`)[0];
+                popup_c491462bab1a67b7d9ba1785c7eaa59b.setContent(html_3297d39bbf4d6c0c89c3c0e823c43131);
+            
+        
+
+        circle_marker_ace0446e1a6d5537f0af5f151108e845.bindPopup(popup_c491462bab1a67b7d9ba1785c7eaa59b)
+        ;
+
+        
+    
+    
+            circle_marker_ace0446e1a6d5537f0af5f151108e845.bindTooltip(
+                `<div>
+                     Ballari — TA-PUS: 0.1786 (LOW)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_67988ec28c4a7456f5b023c773e626b1 = L.marker(
+                [15.2894, 76.9214],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_e7ac05cee25a3e7dafcfd36610190ff4 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eBallari\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_67988ec28c4a7456f5b023c773e626b1.setIcon(div_icon_e7ac05cee25a3e7dafcfd36610190ff4);
+            
+    
+            var circle_marker_2c4b635a11bc1c9e63db0b6d08a4298a = L.circleMarker(
+                [15.8497, 74.4977],
+                {"bubblingMouseEvents": true, "color": "#d73027", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_60e2a198f3cd10a3f5ee0a818905c29e = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_632e317672d53a9a98a27456b06a388d = $(`<div id="html_632e317672d53a9a98a27456b06a388d" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#d73027'>Belagavi</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.8214       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#d73027; font-weight:bold'>CRITICAL</span><br>       <b>Total units needed:</b> 3<br>       <b>Crops with data:</b> onion, potato, tomato<br>       <b>Priority mandi:</b> Belgaum APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1655 × 500W</td><td>OCT</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1198 × 500W</td><td>MAR</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>tomato</td><td>1 × 500 MT</td><td>626 × 500W</td><td>NOV</td></tr>         </table>     </div></div>`)[0];
+                popup_60e2a198f3cd10a3f5ee0a818905c29e.setContent(html_632e317672d53a9a98a27456b06a388d);
+            
+        
+
+        circle_marker_2c4b635a11bc1c9e63db0b6d08a4298a.bindPopup(popup_60e2a198f3cd10a3f5ee0a818905c29e)
+        ;
+
+        
+    
+    
+            circle_marker_2c4b635a11bc1c9e63db0b6d08a4298a.bindTooltip(
+                `<div>
+                     Belagavi — TA-PUS: 0.8214 (CRITICAL)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_de7e8368255c13e3b4a1b654500a36e8 = L.marker(
+                [15.9997, 74.4977],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_a6c3bc613315f23ce98af5ba94011d31 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eBelagavi\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_de7e8368255c13e3b4a1b654500a36e8.setIcon(div_icon_a6c3bc613315f23ce98af5ba94011d31);
+            
+    
+            var circle_marker_ee3e9613e404c596cef18d3fe885bd35 = L.circleMarker(
+                [13.1986, 77.7066],
+                {"bubblingMouseEvents": true, "color": "#1a9850", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1a9850", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_5c710784df16b6e5e6033a0ea8d15964 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_f538658bb29a634fc5ca4cad8e05c488 = $(`<div id="html_f538658bb29a634fc5ca4cad8e05c488" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#1a9850'>Bengaluru Rural</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.0000       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#1a9850; font-weight:bold'>VERY LOW</span><br>       <b>Total units needed:</b> 0<br>       <b>Crops with data:</b> No data<br>       <b>Priority mandi:</b> Unknown<br>       <br>       <b>Multi-Chamber Recommendation:</b>       <i>No chamber data</i>     </div></div>`)[0];
+                popup_5c710784df16b6e5e6033a0ea8d15964.setContent(html_f538658bb29a634fc5ca4cad8e05c488);
+            
+        
+
+        circle_marker_ee3e9613e404c596cef18d3fe885bd35.bindPopup(popup_5c710784df16b6e5e6033a0ea8d15964)
+        ;
+
+        
+    
+    
+            circle_marker_ee3e9613e404c596cef18d3fe885bd35.bindTooltip(
+                `<div>
+                     Bengaluru Rural — TA-PUS: 0.0000 (VERY LOW)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_12f3543222cfb2e6cd87a431b1393a33 = L.marker(
+                [13.348600000000001, 77.7066],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_0efcdeeeceacabad075e0c4ee8c19e02 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eBengaluru Rural\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_12f3543222cfb2e6cd87a431b1393a33.setIcon(div_icon_0efcdeeeceacabad075e0c4ee8c19e02);
+            
+    
+            var circle_marker_95b9a9b625e746db3e8de83af751a338 = L.circleMarker(
+                [12.9716, 77.5946],
+                {"bubblingMouseEvents": true, "color": "#1a9850", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1a9850", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_db16cb7f981150b2d9734d3dd3b3ce9c = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_3131891e6291e0657c86c73f61c4d96f = $(`<div id="html_3131891e6291e0657c86c73f61c4d96f" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#1a9850'>Bengaluru Urban</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.0000       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#1a9850; font-weight:bold'>VERY LOW</span><br>       <b>Total units needed:</b> 0<br>       <b>Crops with data:</b> No data<br>       <b>Priority mandi:</b> Unknown<br>       <br>       <b>Multi-Chamber Recommendation:</b>       <i>No chamber data</i>     </div></div>`)[0];
+                popup_db16cb7f981150b2d9734d3dd3b3ce9c.setContent(html_3131891e6291e0657c86c73f61c4d96f);
+            
+        
+
+        circle_marker_95b9a9b625e746db3e8de83af751a338.bindPopup(popup_db16cb7f981150b2d9734d3dd3b3ce9c)
+        ;
+
+        
+    
+    
+            circle_marker_95b9a9b625e746db3e8de83af751a338.bindTooltip(
+                `<div>
+                     Bengaluru Urban — TA-PUS: 0.0000 (VERY LOW)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b66108000f0c8428e74ea91b7f81a39d = L.marker(
+                [13.1216, 77.5946],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_3e5baf1f363a2de86708ad1122db854e = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eBengaluru Urban\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_b66108000f0c8428e74ea91b7f81a39d.setIcon(div_icon_3e5baf1f363a2de86708ad1122db854e);
+            
+    
+            var circle_marker_7a8373eebd56acac5cddf4fdc6df9fb4 = L.circleMarker(
+                [17.9104, 77.5199],
+                {"bubblingMouseEvents": true, "color": "#91cf60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#91cf60", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_225a95b6b48255bff072bc4333398f2e = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_87e1bb68fc15c598431a8ca40d05ed5a = $(`<div id="html_87e1bb68fc15c598431a8ca40d05ed5a" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#91cf60'>Bidar</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.0714       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#91cf60; font-weight:bold'>LOW</span><br>       <b>Total units needed:</b> 2<br>       <b>Crops with data:</b> onion, potato<br>       <b>Priority mandi:</b> Humanabad APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1559 × 500W</td><td>OCT</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1203 × 500W</td><td>NOV</td></tr>         </table>     </div></div>`)[0];
+                popup_225a95b6b48255bff072bc4333398f2e.setContent(html_87e1bb68fc15c598431a8ca40d05ed5a);
+            
+        
+
+        circle_marker_7a8373eebd56acac5cddf4fdc6df9fb4.bindPopup(popup_225a95b6b48255bff072bc4333398f2e)
+        ;
+
+        
+    
+    
+            circle_marker_7a8373eebd56acac5cddf4fdc6df9fb4.bindTooltip(
+                `<div>
+                     Bidar — TA-PUS: 0.0714 (LOW)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3476badf757aebd1079851ba136f36cb = L.marker(
+                [18.060399999999998, 77.5199],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_558f623360d8706ab4a633891694aa83 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eBidar\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_3476badf757aebd1079851ba136f36cb.setIcon(div_icon_558f623360d8706ab4a633891694aa83);
+            
+    
+            var circle_marker_76faada79a6b3d5cba2a37c905d085b0 = L.circleMarker(
+                [11.9261, 76.9437],
+                {"bubblingMouseEvents": true, "color": "#fc8d59", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 29, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_7e9e1a408f57d26b27e027cf94f64c52 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_cbadaca84a0fa4f02f45070ddafc47f7 = $(`<div id="html_cbadaca84a0fa4f02f45070ddafc47f7" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fc8d59'>Chamarajanagar</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.5357       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fc8d59; font-weight:bold'>HIGH</span><br>       <b>Total units needed:</b> 3<br>       <b>Crops with data:</b> onion, potato, tomato<br>       <b>Priority mandi:</b> Gundlupet APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1583 × 500W</td><td>APR</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1397 × 500W</td><td>OCT</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>tomato</td><td>1 × 500 MT</td><td>806 × 500W</td><td>AUG</td></tr>         </table>     </div></div>`)[0];
+                popup_7e9e1a408f57d26b27e027cf94f64c52.setContent(html_cbadaca84a0fa4f02f45070ddafc47f7);
+            
+        
+
+        circle_marker_76faada79a6b3d5cba2a37c905d085b0.bindPopup(popup_7e9e1a408f57d26b27e027cf94f64c52)
+        ;
+
+        
+    
+    
+            circle_marker_76faada79a6b3d5cba2a37c905d085b0.bindTooltip(
+                `<div>
+                     Chamarajanagar — TA-PUS: 0.5357 (HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cd6d6cf3487ec310fe74f5acc9faf9ce = L.marker(
+                [12.0761, 76.9437],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_a9a2d005775567ecd45885bb2a802bd4 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eChamarajanagar\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_cd6d6cf3487ec310fe74f5acc9faf9ce.setIcon(div_icon_a9a2d005775567ecd45885bb2a802bd4);
+            
+    
+            var circle_marker_d51dd2f2e4077a3bada06e644f0fabeb = L.circleMarker(
+                [13.4354, 77.7282],
+                {"bubblingMouseEvents": true, "color": "#d73027", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 46, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_1d0a19738d5049728676d627e9b865cf = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_bed39c59c22eb841cb38d65ff93027b5 = $(`<div id="html_bed39c59c22eb841cb38d65ff93027b5" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#d73027'>Chikkaballapura</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.9643       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#d73027; font-weight:bold'>CRITICAL</span><br>       <b>Total units needed:</b> 5<br>       <b>Crops with data:</b> mango, onion, potato, tomato<br>       <b>Priority mandi:</b> Chintamani APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1462 × 500W</td><td>APR</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1256 × 500W</td><td>MAY</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>mango, tomato</td><td>3 × 500 MT</td><td>822 × 500W</td><td>JUL, JUN</td></tr>         </table>     </div></div>`)[0];
+                popup_1d0a19738d5049728676d627e9b865cf.setContent(html_bed39c59c22eb841cb38d65ff93027b5);
+            
+        
+
+        circle_marker_d51dd2f2e4077a3bada06e644f0fabeb.bindPopup(popup_1d0a19738d5049728676d627e9b865cf)
+        ;
+
+        
+    
+    
+            circle_marker_d51dd2f2e4077a3bada06e644f0fabeb.bindTooltip(
+                `<div>
+                     Chikkaballapura — TA-PUS: 0.9643 (CRITICAL)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_569f06f1fa53304cc4a20a6e262eae1f = L.marker(
+                [13.5854, 77.7282],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_cd710af817068269320353025d03c7d4 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eChikkaballapura\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_569f06f1fa53304cc4a20a6e262eae1f.setIcon(div_icon_cd710af817068269320353025d03c7d4);
+            
+    
+            var circle_marker_3c7844e246c2126c5a64431f55b3eabf = L.circleMarker(
+                [13.3161, 75.772],
+                {"bubblingMouseEvents": true, "color": "#fc8d59", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_5cd328ad62a8d9b60f1862737bf07ebe = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_1e37b32dc736aec674ce170f2a6aab38 = $(`<div id="html_1e37b32dc736aec674ce170f2a6aab38" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fc8d59'>Chikkamagaluru</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.6786       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fc8d59; font-weight:bold'>HIGH</span><br>       <b>Total units needed:</b> 3<br>       <b>Crops with data:</b> onion, potato, tomato<br>       <b>Priority mandi:</b> Chikkamagaluru APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1625 × 500W</td><td>OCT</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1330 × 500W</td><td>SEP</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>tomato</td><td>1 × 500 MT</td><td>993 × 500W</td><td>JUL</td></tr>         </table>     </div></div>`)[0];
+                popup_5cd328ad62a8d9b60f1862737bf07ebe.setContent(html_1e37b32dc736aec674ce170f2a6aab38);
+            
+        
+
+        circle_marker_3c7844e246c2126c5a64431f55b3eabf.bindPopup(popup_5cd328ad62a8d9b60f1862737bf07ebe)
+        ;
+
+        
+    
+    
+            circle_marker_3c7844e246c2126c5a64431f55b3eabf.bindTooltip(
+                `<div>
+                     Chikkamagaluru — TA-PUS: 0.6786 (HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8d95fe51a89b0df1ec6657433492fbaf = L.marker(
+                [13.4661, 75.772],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_aaf3b3a2bd1cc1475cfd19ccd962ec92 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eChikkamagaluru\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_8d95fe51a89b0df1ec6657433492fbaf.setIcon(div_icon_aaf3b3a2bd1cc1475cfd19ccd962ec92);
+            
+    
+            var circle_marker_4387a57b548f6891ecf5e452bfb25c6b = L.circleMarker(
+                [14.2251, 76.398],
+                {"bubblingMouseEvents": true, "color": "#91cf60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#91cf60", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_c9a71b21c97d0562b005ea404937d444 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_1565e3f76179aa102fbf4ab311eac665 = $(`<div id="html_1565e3f76179aa102fbf4ab311eac665" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#91cf60'>Chitradurga</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.1071       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#91cf60; font-weight:bold'>LOW</span><br>       <b>Total units needed:</b> 2<br>       <b>Crops with data:</b> onion, tomato<br>       <b>Priority mandi:</b> Holalkere APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1675 × 500W</td><td>SEP</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>tomato</td><td>1 × 500 MT</td><td>769 × 500W</td><td>SEP</td></tr>         </table>     </div></div>`)[0];
+                popup_c9a71b21c97d0562b005ea404937d444.setContent(html_1565e3f76179aa102fbf4ab311eac665);
+            
+        
+
+        circle_marker_4387a57b548f6891ecf5e452bfb25c6b.bindPopup(popup_c9a71b21c97d0562b005ea404937d444)
+        ;
+
+        
+    
+    
+            circle_marker_4387a57b548f6891ecf5e452bfb25c6b.bindTooltip(
+                `<div>
+                     Chitradurga — TA-PUS: 0.1071 (LOW)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b5aaee49612d25b15c987f2c0b19b38d = L.marker(
+                [14.3751, 76.398],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_9f7d25a84f40a1a59b709fc867af0b7b = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eChitradurga\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_b5aaee49612d25b15c987f2c0b19b38d.setIcon(div_icon_9f7d25a84f40a1a59b709fc867af0b7b);
+            
+    
+            var circle_marker_01fe16ab04b7c307ea9db343d0302225 = L.circleMarker(
+                [12.8438, 74.99],
+                {"bubblingMouseEvents": true, "color": "#fee08b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 26, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_4c7c9b5f80b3377b98b9e33dd8032a71 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_b66762077e283e8f288ded567777f767 = $(`<div id="html_b66762077e283e8f288ded567777f767" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fee08b'>Dakshina Kannada</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.4643       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fee08b; font-weight:bold'>MODERATE</span><br>       <b>Total units needed:</b> 6<br>       <b>Crops with data:</b> banana, grapes, onion, pomegranate, potato, tomato<br>       <b>Priority mandi:</b> Mangaluru APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>grapes, onion</td><td>2 × 500 MT</td><td>2180 × 500W</td><td>JUN</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>pomegranate, potato</td><td>2 × 500 MT</td><td>1834 × 500W</td><td>JUN</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, tomato</td><td>2 × 500 MT</td><td>1251 × 500W</td><td>FEB, JUL</td></tr>         </table>     </div></div>`)[0];
+                popup_4c7c9b5f80b3377b98b9e33dd8032a71.setContent(html_b66762077e283e8f288ded567777f767);
+            
+        
+
+        circle_marker_01fe16ab04b7c307ea9db343d0302225.bindPopup(popup_4c7c9b5f80b3377b98b9e33dd8032a71)
+        ;
+
+        
+    
+    
+            circle_marker_01fe16ab04b7c307ea9db343d0302225.bindTooltip(
+                `<div>
+                     Dakshina Kannada — TA-PUS: 0.4643 (MODERATE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_99474462257e12e3416cd935e22b29f8 = L.marker(
+                [12.9938, 74.99],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_7df70211d55192b359a5f5a13b9d56c3 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eDakshina Kannada\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_99474462257e12e3416cd935e22b29f8.setIcon(div_icon_7df70211d55192b359a5f5a13b9d56c3);
+            
+    
+            var circle_marker_fe8f99ef3ad0bcbc92d2aa438bf10e9c = L.circleMarker(
+                [14.4644, 75.9218],
+                {"bubblingMouseEvents": true, "color": "#fee08b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_1a01cfafe6f8fc70528ceafc2c19486c = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_be52993cb7165b2b4db2f3e443bafc39 = $(`<div id="html_be52993cb7165b2b4db2f3e443bafc39" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fee08b'>Davangere</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.3214       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fee08b; font-weight:bold'>MODERATE</span><br>       <b>Total units needed:</b> 7<br>       <b>Crops with data:</b> banana, grapes, mango, onion, pomegranate, potato, tomato<br>       <b>Priority mandi:</b> Davangere APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>grapes, onion</td><td>2 × 500 MT</td><td>1596 × 500W</td><td>MAR, DEC</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>pomegranate, potato</td><td>2 × 500 MT</td><td>1787 × 500W</td><td>JUL, FEB</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, mango, tomato</td><td>3 × 500 MT</td><td>847 × 500W</td><td>AUG, MAY, JAN</td></tr>         </table>     </div></div>`)[0];
+                popup_1a01cfafe6f8fc70528ceafc2c19486c.setContent(html_be52993cb7165b2b4db2f3e443bafc39);
+            
+        
+
+        circle_marker_fe8f99ef3ad0bcbc92d2aa438bf10e9c.bindPopup(popup_1a01cfafe6f8fc70528ceafc2c19486c)
+        ;
+
+        
+    
+    
+            circle_marker_fe8f99ef3ad0bcbc92d2aa438bf10e9c.bindTooltip(
+                `<div>
+                     Davangere — TA-PUS: 0.3214 (MODERATE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_edecaf59d1061d438f6901ef51a86576 = L.marker(
+                [14.6144, 75.9218],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_f45ac8076bd7c3041bd1558716f0f530 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eDavangere\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_edecaf59d1061d438f6901ef51a86576.setIcon(div_icon_f45ac8076bd7c3041bd1558716f0f530);
+            
+    
+            var circle_marker_6bfb6b89b5c4a5a90afb1cac8e59605b = L.circleMarker(
+                [15.4589, 75.0078],
+                {"bubblingMouseEvents": true, "color": "#fc8d59", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 38, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_10f2c4a0b51f2be74a1a78b32c7bdb95 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_2e6427b1e57895e0bc183f45595c32a0 = $(`<div id="html_2e6427b1e57895e0bc183f45595c32a0" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fc8d59'>Dharwad</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.7500       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fc8d59; font-weight:bold'>HIGH</span><br>       <b>Total units needed:</b> 3<br>       <b>Crops with data:</b> onion, potato, tomato<br>       <b>Priority mandi:</b> Hubballi APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1667 × 500W</td><td>OCT</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1227 × 500W</td><td>MAR</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>tomato</td><td>1 × 500 MT</td><td>921 × 500W</td><td>JUL</td></tr>         </table>     </div></div>`)[0];
+                popup_10f2c4a0b51f2be74a1a78b32c7bdb95.setContent(html_2e6427b1e57895e0bc183f45595c32a0);
+            
+        
+
+        circle_marker_6bfb6b89b5c4a5a90afb1cac8e59605b.bindPopup(popup_10f2c4a0b51f2be74a1a78b32c7bdb95)
+        ;
+
+        
+    
+    
+            circle_marker_6bfb6b89b5c4a5a90afb1cac8e59605b.bindTooltip(
+                `<div>
+                     Dharwad — TA-PUS: 0.7500 (HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ad4a17c3a9aee17ebf6780f698215269 = L.marker(
+                [15.6089, 75.0078],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_87d45659f63dae5e4fd764fd628603df = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eDharwad\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_ad4a17c3a9aee17ebf6780f698215269.setIcon(div_icon_87d45659f63dae5e4fd764fd628603df);
+            
+    
+            var circle_marker_5c430b66fed97334fe21da1ab96419d3 = L.circleMarker(
+                [15.4166, 75.622],
+                {"bubblingMouseEvents": true, "color": "#fc8d59", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 32, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_d41c19ec472f3fdb170766cea55b6778 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_152decf971645f07921fda5355116f12 = $(`<div id="html_152decf971645f07921fda5355116f12" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fc8d59'>Gadag</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.6071       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fc8d59; font-weight:bold'>HIGH</span><br>       <b>Total units needed:</b> 3<br>       <b>Crops with data:</b> onion, potato, tomato<br>       <b>Priority mandi:</b> Gadag APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1689 × 500W</td><td>NOV</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1663 × 500W</td><td>JUL</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>tomato</td><td>1 × 500 MT</td><td>1002 × 500W</td><td>JUL</td></tr>         </table>     </div></div>`)[0];
+                popup_d41c19ec472f3fdb170766cea55b6778.setContent(html_152decf971645f07921fda5355116f12);
+            
+        
+
+        circle_marker_5c430b66fed97334fe21da1ab96419d3.bindPopup(popup_d41c19ec472f3fdb170766cea55b6778)
+        ;
+
+        
+    
+    
+            circle_marker_5c430b66fed97334fe21da1ab96419d3.bindTooltip(
+                `<div>
+                     Gadag — TA-PUS: 0.6071 (HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_40b3f578d91e3ae2180d545ce7114408 = L.marker(
+                [15.566600000000001, 75.622],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_58c867c4118281142ae32920d646e34e = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eGadag\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_40b3f578d91e3ae2180d545ce7114408.setIcon(div_icon_58c867c4118281142ae32920d646e34e);
+            
+    
+            var circle_marker_37691c90d288f3ededdd8a61f5a61fd7 = L.circleMarker(
+                [13.0034, 76.1004],
+                {"bubblingMouseEvents": true, "color": "#d73027", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 43, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_cdd9a03a11681bdf0feff7bac6e53a04 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_78d297e37425bf345adc2fcb07e97fa8 = $(`<div id="html_78d297e37425bf345adc2fcb07e97fa8" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#d73027'>Hassan</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.8929       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#d73027; font-weight:bold'>CRITICAL</span><br>       <b>Total units needed:</b> 4<br>       <b>Crops with data:</b> banana, onion, potato, tomato<br>       <b>Priority mandi:</b> Hassan APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1618 × 500W</td><td>OCT</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1186 × 500W</td><td>MAY</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, tomato</td><td>2 × 500 MT</td><td>782 × 500W</td><td>MAY, JUL</td></tr>         </table>     </div></div>`)[0];
+                popup_cdd9a03a11681bdf0feff7bac6e53a04.setContent(html_78d297e37425bf345adc2fcb07e97fa8);
+            
+        
+
+        circle_marker_37691c90d288f3ededdd8a61f5a61fd7.bindPopup(popup_cdd9a03a11681bdf0feff7bac6e53a04)
+        ;
+
+        
+    
+    
+            circle_marker_37691c90d288f3ededdd8a61f5a61fd7.bindTooltip(
+                `<div>
+                     Hassan — TA-PUS: 0.8929 (CRITICAL)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_fc0806e3823cf5bdfbc99751d1e8c39a = L.marker(
+                [13.1534, 76.1004],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_0b051f5078c2469474c25d6148ba98f3 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eHassan\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_fc0806e3823cf5bdfbc99751d1e8c39a.setIcon(div_icon_0b051f5078c2469474c25d6148ba98f3);
+            
+    
+            var circle_marker_699ea6c2c6c434e58b753293e7bdbc5d = L.circleMarker(
+                [14.7957, 75.3996],
+                {"bubblingMouseEvents": true, "color": "#fee08b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_7d6f3ee1f757e6af66b13c818ed68768 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_7716fd5faa714a919087098c421fd1c7 = $(`<div id="html_7716fd5faa714a919087098c421fd1c7" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fee08b'>Haveri</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.2500       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fee08b; font-weight:bold'>MODERATE</span><br>       <b>Total units needed:</b> 4<br>       <b>Crops with data:</b> banana, onion, potato, tomato<br>       <b>Priority mandi:</b> Ranebennur APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1483 × 500W</td><td>MAR</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1752 × 500W</td><td>JUL</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, tomato</td><td>2 × 500 MT</td><td>821 × 500W</td><td>MAY, OCT</td></tr>         </table>     </div></div>`)[0];
+                popup_7d6f3ee1f757e6af66b13c818ed68768.setContent(html_7716fd5faa714a919087098c421fd1c7);
+            
+        
+
+        circle_marker_699ea6c2c6c434e58b753293e7bdbc5d.bindPopup(popup_7d6f3ee1f757e6af66b13c818ed68768)
+        ;
+
+        
+    
+    
+            circle_marker_699ea6c2c6c434e58b753293e7bdbc5d.bindTooltip(
+                `<div>
+                     Haveri — TA-PUS: 0.2500 (MODERATE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2176f9f8f8dfa44de9a104dd4549872f = L.marker(
+                [14.9457, 75.3996],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_472330560528ba5af59877c4a9d75de8 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eHaveri\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_2176f9f8f8dfa44de9a104dd4549872f.setIcon(div_icon_472330560528ba5af59877c4a9d75de8);
+            
+    
+            var circle_marker_5ede73b8c9cdfddfed26ff062f1fdab5 = L.circleMarker(
+                [17.3297, 76.82],
+                {"bubblingMouseEvents": true, "color": "#fc8d59", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 28, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_aa85c76f39a91bacdd9dfe8b70dd14fd = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_e9b447aa7570ac4ecf0e615a189c6bab = $(`<div id="html_e9b447aa7570ac4ecf0e615a189c6bab" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fc8d59'>Kalaburagi</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.5000       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fc8d59; font-weight:bold'>HIGH</span><br>       <b>Total units needed:</b> 7<br>       <b>Crops with data:</b> banana, grapes, mango, onion, pomegranate, potato, tomato<br>       <b>Priority mandi:</b> Kalaburagi APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>grapes, onion</td><td>2 × 500 MT</td><td>1696 × 500W</td><td>APR, MAR</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>pomegranate, potato</td><td>2 × 500 MT</td><td>1517 × 500W</td><td>MAR, AUG</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, mango, tomato</td><td>3 × 500 MT</td><td>1058 × 500W</td><td>JAN, MAY, OCT</td></tr>         </table>     </div></div>`)[0];
+                popup_aa85c76f39a91bacdd9dfe8b70dd14fd.setContent(html_e9b447aa7570ac4ecf0e615a189c6bab);
+            
+        
+
+        circle_marker_5ede73b8c9cdfddfed26ff062f1fdab5.bindPopup(popup_aa85c76f39a91bacdd9dfe8b70dd14fd)
+        ;
+
+        
+    
+    
+            circle_marker_5ede73b8c9cdfddfed26ff062f1fdab5.bindTooltip(
+                `<div>
+                     Kalaburagi — TA-PUS: 0.5000 (HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_7ef722910737d12754a46aa499a1dae1 = L.marker(
+                [17.479699999999998, 76.82],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_e4d97ae4972278a82ad97834542ff813 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eKalaburagi\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_7ef722910737d12754a46aa499a1dae1.setIcon(div_icon_e4d97ae4972278a82ad97834542ff813);
+            
+    
+            var circle_marker_461ad411376e384888cee58198da24de = L.circleMarker(
+                [12.3375, 75.8069],
+                {"bubblingMouseEvents": true, "color": "#1a9850", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1a9850", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_c406cc8c0aeee751ad3547fa81a187dc = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_1e0edf40dd87f53fd9464aea0760b378 = $(`<div id="html_1e0edf40dd87f53fd9464aea0760b378" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#1a9850'>Kodagu</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.0357       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#1a9850; font-weight:bold'>VERY LOW</span><br>       <b>Total units needed:</b> 2<br>       <b>Crops with data:</b> onion, potato<br>       <b>Priority mandi:</b> Gonikappal APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1677 × 500W</td><td>OCT</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1511 × 500W</td><td>JUN</td></tr>         </table>     </div></div>`)[0];
+                popup_c406cc8c0aeee751ad3547fa81a187dc.setContent(html_1e0edf40dd87f53fd9464aea0760b378);
+            
+        
+
+        circle_marker_461ad411376e384888cee58198da24de.bindPopup(popup_c406cc8c0aeee751ad3547fa81a187dc)
+        ;
+
+        
+    
+    
+            circle_marker_461ad411376e384888cee58198da24de.bindTooltip(
+                `<div>
+                     Kodagu — TA-PUS: 0.0357 (VERY LOW)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c99aac56d7e90b29d30baa813f271db4 = L.marker(
+                [12.4875, 75.8069],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_a8d719f8df56ddeb4c288cc0e06e9d05 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eKodagu\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_c99aac56d7e90b29d30baa813f271db4.setIcon(div_icon_a8d719f8df56ddeb4c288cc0e06e9d05);
+            
+    
+            var circle_marker_11849b89400b4adae0df8a383efe947f = L.circleMarker(
+                [13.1306, 78.1352],
+                {"bubblingMouseEvents": true, "color": "#d73027", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 48, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_f36c2277a543f700f721a82c4050252d = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_cdebe23d7f57d90c39399206d14a9c2d = $(`<div id="html_cdebe23d7f57d90c39399206d14a9c2d" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#d73027'>Kolar</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 1.0000       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#d73027; font-weight:bold'>CRITICAL</span><br>       <b>Total units needed:</b> 18<br>       <b>Crops with data:</b> banana, grapes, mango, onion, pomegranate, potato, tomato<br>       <b>Priority mandi:</b> Kolar APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>grapes, onion</td><td>2 × 500 MT</td><td>1574 × 500W</td><td>JUN, AUG</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>pomegranate, potato</td><td>2 × 500 MT</td><td>1227 × 500W</td><td>JUN, JAN</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, mango, tomato</td><td>14 × 500 MT</td><td>793 × 500W</td><td>FEB, JUL</td></tr>         </table>     </div></div>`)[0];
+                popup_f36c2277a543f700f721a82c4050252d.setContent(html_cdebe23d7f57d90c39399206d14a9c2d);
+            
+        
+
+        circle_marker_11849b89400b4adae0df8a383efe947f.bindPopup(popup_f36c2277a543f700f721a82c4050252d)
+        ;
+
+        
+    
+    
+            circle_marker_11849b89400b4adae0df8a383efe947f.bindTooltip(
+                `<div>
+                     Kolar — TA-PUS: 1.0000 (CRITICAL)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d5bc7284a2c0e18171350aa61c890146 = L.marker(
+                [13.2806, 78.1352],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_84c6ca3abf9ad4f902957fa944976786 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eKolar\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_d5bc7284a2c0e18171350aa61c890146.setIcon(div_icon_84c6ca3abf9ad4f902957fa944976786);
+            
+    
+            var circle_marker_44969a83175172be9533ec34c8538da3 = L.circleMarker(
+                [15.3508, 76.1547],
+                {"bubblingMouseEvents": true, "color": "#91cf60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#91cf60", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_1729254c471a9d426076ab96862a7aee = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_28d98a47c3ee6da64536502947e42245 = $(`<div id="html_28d98a47c3ee6da64536502947e42245" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#91cf60'>Koppal</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.1429       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#91cf60; font-weight:bold'>LOW</span><br>       <b>Total units needed:</b> 3<br>       <b>Crops with data:</b> onion, potato, tomato<br>       <b>Priority mandi:</b> Koppal APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1813 × 500W</td><td>AUG</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1454 × 500W</td><td>AUG</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>tomato</td><td>1 × 500 MT</td><td>903 × 500W</td><td>AUG</td></tr>         </table>     </div></div>`)[0];
+                popup_1729254c471a9d426076ab96862a7aee.setContent(html_28d98a47c3ee6da64536502947e42245);
+            
+        
+
+        circle_marker_44969a83175172be9533ec34c8538da3.bindPopup(popup_1729254c471a9d426076ab96862a7aee)
+        ;
+
+        
+    
+    
+            circle_marker_44969a83175172be9533ec34c8538da3.bindTooltip(
+                `<div>
+                     Koppal — TA-PUS: 0.1429 (LOW)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2675c34bba25544a94ede5856ca6077d = L.marker(
+                [15.5008, 76.1547],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_3a9d54e87fa5844e47906c9985404d21 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eKoppal\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_2675c34bba25544a94ede5856ca6077d.setIcon(div_icon_3a9d54e87fa5844e47906c9985404d21);
+            
+    
+            var circle_marker_bd1c1beff67861b236b32ebabdf21857 = L.circleMarker(
+                [12.5218, 76.895],
+                {"bubblingMouseEvents": true, "color": "#fee08b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 23, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_41777ec304284eece8960aa4505f5b52 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_176eeb3d12afb9192db3bc3a0ee9aa15 = $(`<div id="html_176eeb3d12afb9192db3bc3a0ee9aa15" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fee08b'>Mandya</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.3929       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fee08b; font-weight:bold'>MODERATE</span><br>       <b>Total units needed:</b> 4<br>       <b>Crops with data:</b> banana, onion, potato, tomato<br>       <b>Priority mandi:</b> Mandya APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1432 × 500W</td><td>MAR</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1160 × 500W</td><td>MAR</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, tomato</td><td>2 × 500 MT</td><td>767 × 500W</td><td>FEB, JUN</td></tr>         </table>     </div></div>`)[0];
+                popup_41777ec304284eece8960aa4505f5b52.setContent(html_176eeb3d12afb9192db3bc3a0ee9aa15);
+            
+        
+
+        circle_marker_bd1c1beff67861b236b32ebabdf21857.bindPopup(popup_41777ec304284eece8960aa4505f5b52)
+        ;
+
+        
+    
+    
+            circle_marker_bd1c1beff67861b236b32ebabdf21857.bindTooltip(
+                `<div>
+                     Mandya — TA-PUS: 0.3929 (MODERATE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b03cfa51fd5ab40a146790baba9d851e = L.marker(
+                [12.671800000000001, 76.895],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_82331b04ba5b94bc274a688c8f8140e0 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eMandya\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_b03cfa51fd5ab40a146790baba9d851e.setIcon(div_icon_82331b04ba5b94bc274a688c8f8140e0);
+            
+    
+            var circle_marker_8cd8ac4ecb5a050430f3332dc8321194 = L.circleMarker(
+                [12.2958, 76.6394],
+                {"bubblingMouseEvents": true, "color": "#fc8d59", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 33, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_1468dff094666658b1824e4585588cf2 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_d283ba610d5650dd7cb850837be21401 = $(`<div id="html_d283ba610d5650dd7cb850837be21401" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fc8d59'>Mysuru</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.6429       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fc8d59; font-weight:bold'>HIGH</span><br>       <b>Total units needed:</b> 7<br>       <b>Crops with data:</b> banana, grapes, mango, onion, pomegranate, potato, tomato<br>       <b>Priority mandi:</b> Mysuru APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>grapes, onion</td><td>2 × 500 MT</td><td>1408 × 500W</td><td>MAR, JAN</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>pomegranate, potato</td><td>2 × 500 MT</td><td>1427 × 500W</td><td>AUG, OCT</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, mango, tomato</td><td>3 × 500 MT</td><td>823 × 500W</td><td>FEB, MAY, NOV</td></tr>         </table>     </div></div>`)[0];
+                popup_1468dff094666658b1824e4585588cf2.setContent(html_d283ba610d5650dd7cb850837be21401);
+            
+        
+
+        circle_marker_8cd8ac4ecb5a050430f3332dc8321194.bindPopup(popup_1468dff094666658b1824e4585588cf2)
+        ;
+
+        
+    
+    
+            circle_marker_8cd8ac4ecb5a050430f3332dc8321194.bindTooltip(
+                `<div>
+                     Mysuru — TA-PUS: 0.6429 (HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_66750b623e642d134c8bae09e7e9beeb = L.marker(
+                [12.4458, 76.6394],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_f6f73392dcdd26b4099f878c6a29bb1b = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eMysuru\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_66750b623e642d134c8bae09e7e9beeb.setIcon(div_icon_f6f73392dcdd26b4099f878c6a29bb1b);
+            
+    
+            var circle_marker_8370c0c49d803d7954e8b5b14f8bb95c = L.circleMarker(
+                [16.212, 77.3566],
+                {"bubblingMouseEvents": true, "color": "#fc8d59", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 36, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_e77b8339ccc9874b5971c99acd97ebe1 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_20dc496b4b3cf33b749e7dbafe0d713b = $(`<div id="html_20dc496b4b3cf33b749e7dbafe0d713b" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fc8d59'>Raichur</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.7143       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fc8d59; font-weight:bold'>HIGH</span><br>       <b>Total units needed:</b> 1<br>       <b>Crops with data:</b> onion<br>       <b>Priority mandi:</b> Raichur APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1612 × 500W</td><td>MAR</td></tr>         </table>     </div></div>`)[0];
+                popup_e77b8339ccc9874b5971c99acd97ebe1.setContent(html_20dc496b4b3cf33b749e7dbafe0d713b);
+            
+        
+
+        circle_marker_8370c0c49d803d7954e8b5b14f8bb95c.bindPopup(popup_e77b8339ccc9874b5971c99acd97ebe1)
+        ;
+
+        
+    
+    
+            circle_marker_8370c0c49d803d7954e8b5b14f8bb95c.bindTooltip(
+                `<div>
+                     Raichur — TA-PUS: 0.7143 (HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b288e66a7b580c37df50718ee3f9e778 = L.marker(
+                [16.362, 77.3566],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_8ea6216f6b2d37ef436a404020b82083 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eRaichur\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_b288e66a7b580c37df50718ee3f9e778.setIcon(div_icon_8ea6216f6b2d37ef436a404020b82083);
+            
+    
+            var circle_marker_9ae9fe7306a1408094ffb6e1eb07a0ee = L.circleMarker(
+                [12.7157, 77.2817],
+                {"bubblingMouseEvents": true, "color": "#d73027", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 45, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_679cc375687d2b3820b26c08f58266d8 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_3351e8bb6af060cedd5907f644d39cb7 = $(`<div id="html_3351e8bb6af060cedd5907f644d39cb7" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#d73027'>Ramanagara</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.9286       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#d73027; font-weight:bold'>CRITICAL</span><br>       <b>Total units needed:</b> 6<br>       <b>Crops with data:</b> banana, mango, onion, potato, tomato<br>       <b>Priority mandi:</b> Channapatna APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1536 × 500W</td><td>JUN</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1223 × 500W</td><td>APR</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, mango, tomato</td><td>4 × 500 MT</td><td>830 × 500W</td><td>APR, MAY, JAN</td></tr>         </table>     </div></div>`)[0];
+                popup_679cc375687d2b3820b26c08f58266d8.setContent(html_3351e8bb6af060cedd5907f644d39cb7);
+            
+        
+
+        circle_marker_9ae9fe7306a1408094ffb6e1eb07a0ee.bindPopup(popup_679cc375687d2b3820b26c08f58266d8)
+        ;
+
+        
+    
+    
+            circle_marker_9ae9fe7306a1408094ffb6e1eb07a0ee.bindTooltip(
+                `<div>
+                     Ramanagara — TA-PUS: 0.9286 (CRITICAL)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_bf11b4ccb0a9d0ac706f2a87e3f4fbab = L.marker(
+                [12.8657, 77.2817],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_63bf3e8b116dd5a345cfaecfe7b98d71 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eRamanagara\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_bf11b4ccb0a9d0ac706f2a87e3f4fbab.setIcon(div_icon_63bf3e8b116dd5a345cfaecfe7b98d71);
+            
+    
+            var circle_marker_e75354a4cf3ca28c2cca53fa7c8b0c24 = L.circleMarker(
+                [13.9299, 75.5681],
+                {"bubblingMouseEvents": true, "color": "#d73027", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 42, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_017de68fc9d97346dac6da45cf67be20 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_3c518305126f9fe153fce20dd9a88762 = $(`<div id="html_3c518305126f9fe153fce20dd9a88762" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#d73027'>Shivamogga</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.8571       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#d73027; font-weight:bold'>CRITICAL</span><br>       <b>Total units needed:</b> 3<br>       <b>Crops with data:</b> onion, potato, tomato<br>       <b>Priority mandi:</b> Shimoga APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1668 × 500W</td><td>MAY</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1134 × 500W</td><td>MAR</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>tomato</td><td>1 × 500 MT</td><td>878 × 500W</td><td>JUN</td></tr>         </table>     </div></div>`)[0];
+                popup_017de68fc9d97346dac6da45cf67be20.setContent(html_3c518305126f9fe153fce20dd9a88762);
+            
+        
+
+        circle_marker_e75354a4cf3ca28c2cca53fa7c8b0c24.bindPopup(popup_017de68fc9d97346dac6da45cf67be20)
+        ;
+
+        
+    
+    
+            circle_marker_e75354a4cf3ca28c2cca53fa7c8b0c24.bindTooltip(
+                `<div>
+                     Shivamogga — TA-PUS: 0.8571 (CRITICAL)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2cb9d789acd3200bbe13381b22ba33f7 = L.marker(
+                [14.0799, 75.5681],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_0c34c7f6c7f396fb3a4f4b317b9813ef = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eShivamogga\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_2cb9d789acd3200bbe13381b22ba33f7.setIcon(div_icon_0c34c7f6c7f396fb3a4f4b317b9813ef);
+            
+    
+            var circle_marker_740273a25eda16eb1fd41f95d22c24cb = L.circleMarker(
+                [13.3379, 77.1173],
+                {"bubblingMouseEvents": true, "color": "#fee08b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_5342cb40bdf6745292b7052aeaacde31 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_406f51a9ecea19f6358ddc1304ff76b2 = $(`<div id="html_406f51a9ecea19f6358ddc1304ff76b2" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fee08b'>Tumakuru</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.4286       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fee08b; font-weight:bold'>MODERATE</span><br>       <b>Total units needed:</b> 5<br>       <b>Crops with data:</b> banana, mango, onion, potato, tomato<br>       <b>Priority mandi:</b> Gubbi APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1536 × 500W</td><td>MAY</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1238 × 500W</td><td>MAY</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, mango, tomato</td><td>3 × 500 MT</td><td>841 × 500W</td><td>MAR, JUN, JUL</td></tr>         </table>     </div></div>`)[0];
+                popup_5342cb40bdf6745292b7052aeaacde31.setContent(html_406f51a9ecea19f6358ddc1304ff76b2);
+            
+        
+
+        circle_marker_740273a25eda16eb1fd41f95d22c24cb.bindPopup(popup_5342cb40bdf6745292b7052aeaacde31)
+        ;
+
+        
+    
+    
+            circle_marker_740273a25eda16eb1fd41f95d22c24cb.bindTooltip(
+                `<div>
+                     Tumakuru — TA-PUS: 0.4286 (MODERATE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_94876bdaa8f5b3026f5b0be2d47d94f5 = L.marker(
+                [13.4879, 77.1173],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_a689bb7faa503efe2d1301305d6287b6 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eTumakuru\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_94876bdaa8f5b3026f5b0be2d47d94f5.setIcon(div_icon_a689bb7faa503efe2d1301305d6287b6);
+            
+    
+            var circle_marker_f92566f595fa2bdfd4f03a7de63f2858 = L.circleMarker(
+                [13.3409, 74.7421],
+                {"bubblingMouseEvents": true, "color": "#fee08b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_0ab81e5f82c95431aa8ab9c9b372d0c6 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_0df4a4629cf77cb513adbd96a1ad5095 = $(`<div id="html_0df4a4629cf77cb513adbd96a1ad5095" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fee08b'>Udupi</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.3571       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fee08b; font-weight:bold'>MODERATE</span><br>       <b>Total units needed:</b> 6<br>       <b>Crops with data:</b> banana, grapes, onion, pomegranate, potato, tomato<br>       <b>Priority mandi:</b> Udupi APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>grapes, onion</td><td>2 × 500 MT</td><td>1610 × 500W</td><td>MAY, APR</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>pomegranate, potato</td><td>2 × 500 MT</td><td>1657 × 500W</td><td>APR, JUN</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, tomato</td><td>2 × 500 MT</td><td>749 × 500W</td><td>APR, JAN</td></tr>         </table>     </div></div>`)[0];
+                popup_0ab81e5f82c95431aa8ab9c9b372d0c6.setContent(html_0df4a4629cf77cb513adbd96a1ad5095);
+            
+        
+
+        circle_marker_f92566f595fa2bdfd4f03a7de63f2858.bindPopup(popup_0ab81e5f82c95431aa8ab9c9b372d0c6)
+        ;
+
+        
+    
+    
+            circle_marker_f92566f595fa2bdfd4f03a7de63f2858.bindTooltip(
+                `<div>
+                     Udupi — TA-PUS: 0.3571 (MODERATE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_6bc9953f65c9ebcf1c758b9406a8b693 = L.marker(
+                [13.4909, 74.7421],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_3bbadb59b43f46bd1ce04da022cd1f6b = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eUdupi\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_6bc9953f65c9ebcf1c758b9406a8b693.setIcon(div_icon_3bbadb59b43f46bd1ce04da022cd1f6b);
+            
+    
+            var circle_marker_ed2d57e9fe56735d52a1c3cf0b93e8f1 = L.circleMarker(
+                [14.7941, 74.6938],
+                {"bubblingMouseEvents": true, "color": "#fc8d59", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_987df9e7e21fa080eb01f49d64dec57f = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_dadcbd81a32bd88d1de874f154896a98 = $(`<div id="html_dadcbd81a32bd88d1de874f154896a98" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fc8d59'>Uttara Kannada</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.5714       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fc8d59; font-weight:bold'>HIGH</span><br>       <b>Total units needed:</b> 2<br>       <b>Crops with data:</b> banana, mango<br>       <b>Priority mandi:</b> Haliyala APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Warm (13-15°C)</b></td><td>banana, mango</td><td>2 × 500 MT</td><td>889 × 500W</td><td>FEB, MAY</td></tr>         </table>     </div></div>`)[0];
+                popup_987df9e7e21fa080eb01f49d64dec57f.setContent(html_dadcbd81a32bd88d1de874f154896a98);
+            
+        
+
+        circle_marker_ed2d57e9fe56735d52a1c3cf0b93e8f1.bindPopup(popup_987df9e7e21fa080eb01f49d64dec57f)
+        ;
+
+        
+    
+    
+            circle_marker_ed2d57e9fe56735d52a1c3cf0b93e8f1.bindTooltip(
+                `<div>
+                     Uttara Kannada — TA-PUS: 0.5714 (HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b993620593243ef9d0801c3e323904d8 = L.marker(
+                [14.9441, 74.6938],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_56d3e5f208bb2c482af6bc2ab1c90692 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eUttara Kannada\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_b993620593243ef9d0801c3e323904d8.setIcon(div_icon_56d3e5f208bb2c482af6bc2ab1c90692);
+            
+    
+            var circle_marker_86522cf59ede08f035d6d61204118108 = L.circleMarker(
+                [15.1394, 76.5204],
+                {"bubblingMouseEvents": true, "color": "#fee08b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_7e4b9044fcd30d87c4fad1143b11402a = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_a8de9d0f1748acab1814ca171e3dfcba = $(`<div id="html_a8de9d0f1748acab1814ca171e3dfcba" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fee08b'>Vijayanagara</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.2857       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fee08b; font-weight:bold'>MODERATE</span><br>       <b>Total units needed:</b> 4<br>       <b>Crops with data:</b> banana, onion, potato, tomato<br>       <b>Priority mandi:</b> Hospet APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1618 × 500W</td><td>MAY</td></tr><tr><td><b>Cool (4-6°C)</b></td><td>potato</td><td>1 × 500 MT</td><td>1313 × 500W</td><td>MAY</td></tr><tr><td><b>Warm (13-15°C)</b></td><td>banana, tomato</td><td>2 × 500 MT</td><td>847 × 500W</td><td>APR, NOV</td></tr>         </table>     </div></div>`)[0];
+                popup_7e4b9044fcd30d87c4fad1143b11402a.setContent(html_a8de9d0f1748acab1814ca171e3dfcba);
+            
+        
+
+        circle_marker_86522cf59ede08f035d6d61204118108.bindPopup(popup_7e4b9044fcd30d87c4fad1143b11402a)
+        ;
+
+        
+    
+    
+            circle_marker_86522cf59ede08f035d6d61204118108.bindTooltip(
+                `<div>
+                     Vijayanagara — TA-PUS: 0.2857 (MODERATE)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_70eb9853624576fc66d548e4ee80b757 = L.marker(
+                [15.2894, 76.5204],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_a71828d4bfaf87bfbd27bfc95b758a30 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eVijayanagara\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_70eb9853624576fc66d548e4ee80b757.setIcon(div_icon_a71828d4bfaf87bfbd27bfc95b758a30);
+            
+    
+            var circle_marker_c3950c76f57867c09cf827861eb884bd = L.circleMarker(
+                [16.8302, 75.71],
+                {"bubblingMouseEvents": true, "color": "#fc8d59", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 39, "stroke": true, "weight": 2}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+        var popup_36f40b33c3d29afe657034999e7bc865 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_8df3cc4ca7d498cc4e308c7f46a9be83 = $(`<div id="html_8df3cc4ca7d498cc4e308c7f46a9be83" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:420px'>       <h3 style='margin:0; color:#fc8d59'>Vijayapura</h3>       <hr style='margin:4px 0'>       <b>TA-PUS Score:</b> 0.7857       &nbsp;&nbsp;<b>Urgency:</b>       <span style='color:#fc8d59; font-weight:bold'>HIGH</span><br>       <b>Total units needed:</b> 1<br>       <b>Crops with data:</b> onion<br>       <b>Priority mandi:</b> Vijayapura APMC<br>       <br>       <b>Multi-Chamber Recommendation:</b>                <table border='1' style='border-collapse:collapse;                font-size:11px; margin-top:8px;'>           <tr style='background:#f0f0f0'>             <th>Chamber</th>             <th>Crops</th>             <th>Capacity</th>             <th>Solar</th>             <th>Peak Month</th>           </tr>           <tr><td><b>Cold (1-3°C)</b></td><td>onion</td><td>1 × 500 MT</td><td>1704 × 500W</td><td>APR</td></tr>         </table>     </div></div>`)[0];
+                popup_36f40b33c3d29afe657034999e7bc865.setContent(html_8df3cc4ca7d498cc4e308c7f46a9be83);
+            
+        
+
+        circle_marker_c3950c76f57867c09cf827861eb884bd.bindPopup(popup_36f40b33c3d29afe657034999e7bc865)
+        ;
+
+        
+    
+    
+            circle_marker_c3950c76f57867c09cf827861eb884bd.bindTooltip(
+                `<div>
+                     Vijayapura — TA-PUS: 0.7857 (HIGH)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f135b63cbea7425c1cff7c7cc2c3cf60 = L.marker(
+                [16.9802, 75.71],
+                {
+}
+            ).addTo(map_d7300aad30b4a61dea6011fb0709c9ec);
+        
+    
+            var div_icon_f3e51b9c78b6876bb2b1ef1442f121e7 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap\"\u003eVijayapura\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [60, 10],
+  "className": "empty",
+});
+        
+    
+                marker_f135b63cbea7425c1cff7c7cc2c3cf60.setIcon(div_icon_f3e51b9c78b6876bb2b1ef1442f121e7);
+            
+</script>
+</html>

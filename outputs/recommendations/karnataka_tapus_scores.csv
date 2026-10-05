@@ -1,0 +1,105 @@
+district,crop,chamber,nhb_temp_c,best_mandi,model_used,n_months,peak_forecast_mt,peak_month,peak_temp_c,shelf_life_days,cooling_gap_c,solar_kwh_m2,icar_loss_rate,tonnes_at_risk,urgency_raw,units_needed,panels_per_unit
+Bagalkot,onion,Cold (1-3°C),2.0,Bagalkot APMC,SARIMAX (auto),41,1491.0,NOV,22.99,33.29,20.99,4.4527,5.78,86.2,54.3292,1,1707
+Ballari,onion,Cold (1-3°C),2.0,Ballari APMC,Historical max,1,310.0,MAR,29.72,23.625,27.72,6.4167,5.78,17.9,21.0238,1,1564
+Ballari,potato,Cool (4-6°C),4.0,Ballari APMC,Historical max,1,280.0,MAR,29.72,15.553,25.72,6.4167,7.13,20.0,33.0145,1,1273
+Belagavi,onion,Cold (1-3°C),2.0,Belgaum APMC,SARIMAX (auto),61,6277.0,OCT,23.23,32.869,21.23,4.6464,5.78,362.8,234.3844,1,1655
+Belagavi,potato,Cool (4-6°C),4.0,Belgaum APMC,SARIMAX (auto),71,1456.0,MAR,27.8,17.216,23.8,6.311,7.13,103.8,143.5021,1,1198
+Belagavi,tomato,Warm (13-15°C),14.0,Belgaum APMC,Prophet (auto),51,487.0,NOV,21.64,2.463,7.64,4.5112,12.44,60.6,187.8239,1,626
+Bidar,onion,Cold (1-3°C),2.0,Humanabad APMC,Historical max,4,98.0,OCT,23.53,32.361,21.53,5.0038,5.78,5.7,3.7693,1,1559
+Bidar,potato,Cool (4-6°C),4.0,Humanabad APMC,Historical max (auto),7,34.0,NOV,20.86,25.102,16.86,4.4525,7.13,2.4,1.6282,1,1203
+Chamarajanagar,onion,Cold (1-3°C),2.0,Gundlupet APMC,SARIMAX (auto),26,113.0,APR,28.14,25.568,26.14,5.9809,5.78,6.5,6.678,1,1583
+Chamarajanagar,potato,Cool (4-6°C),4.0,Gundlupet APMC,Prophet (auto),13,57.0,OCT,23.24,22.014,19.24,4.3753,7.13,4.1,3.5516,1,1397
+Chamarajanagar,tomato,Warm (13-15°C),14.0,Gundlupet APMC,SARIMAX (auto),67,476.0,AUG,23.68,2.169,9.68,4.4404,12.44,59.2,264.344,1,806
+Chikkaballapura,mango,Warm (13-15°C),14.0,Chintamani APMC,Historical max,2,679.0,JUL,23.92,4.283,9.92,4.3587,9.16,62.2,144.0261,1,822
+Chikkaballapura,onion,Cold (1-3°C),2.0,Chickkaballapura APMC,SARIMAX (auto),67,75.0,APR,28.97,24.529,26.97,6.6821,5.78,4.3,4.7611,1,1462
+Chikkaballapura,potato,Cool (4-6°C),4.0,Chickkaballapura APMC,Prophet (auto),72,219.0,MAY,27.06,17.907,23.06,5.8335,7.13,15.6,20.068,1,1256
+Chikkaballapura,tomato,Warm (13-15°C),14.0,Chintamani APMC,Prophet (auto),67,10267.0,JUN,24.71,2.036,10.71,5.4437,12.44,1277.2,6717.2139,2,727
+Chikkamagaluru,onion,Cold (1-3°C),2.0,Chikkamagaluru APMC,Prophet (auto),67,285.0,OCT,22.56,34.042,20.56,4.5833,5.78,16.5,9.951,1,1625
+Chikkamagaluru,potato,Cool (4-6°C),4.0,Chikkamagaluru APMC,Prophet (auto),72,42.0,SEP,22.23,23.273,18.23,4.3545,7.13,3.0,2.3498,1,1330
+Chikkamagaluru,tomato,Warm (13-15°C),14.0,Chikkamagaluru APMC,Prophet (auto),67,836.0,JUL,22.45,2.34,8.45,3.1462,12.44,103.9,375.512,1,993
+Chitradurga,onion,Cold (1-3°C),2.0,Holalkere APMC,Historical max,2,91.0,SEP,23.82,31.887,21.82,4.7169,5.78,5.3,3.5989,1,1675
+Chitradurga,tomato,Warm (13-15°C),14.0,Holalkere APMC,Historical max,1,10.0,SEP,23.82,2.151,9.82,4.7169,12.44,1.2,5.6781,1,769
+Dakshina Kannada,banana,Warm (13-15°C),13.0,Belthangdi APMC,SARIMAX (auto),29,14.0,FEB,27.62,2.57,14.62,6.1241,8.2,1.1,6.4256,1,741
+Dakshina Kannada,grapes,Cold (1-3°C),1.0,Mangaluru APMC,Historical max (auto),13,25.0,JUN,26.96,4.418,25.96,4.1461,8.3,2.1,12.1917,1,2087
+Dakshina Kannada,onion,Cold (1-3°C),2.0,Mangaluru APMC,SARIMAX (auto),45,12.0,JUN,26.96,27.145,24.96,4.1461,5.78,0.7,0.6555,1,2180
+Dakshina Kannada,pomegranate,Cool (4-6°C),5.0,Mangaluru APMC,Prophet (auto),10,188.0,JUN,26.96,6.251,21.96,4.1461,5.0,9.4,32.9808,1,1834
+Dakshina Kannada,potato,Cool (4-6°C),4.0,Mangaluru APMC,Prophet (auto),45,148.0,JUN,26.96,18.001,22.96,4.1461,7.13,10.6,13.4583,1,1759
+Dakshina Kannada,tomato,Warm (13-15°C),14.0,Mangaluru APMC,Prophet (auto),24,185.0,JUL,25.9,1.893,11.9,3.5166,12.44,23.1,144.9762,1,1251
+Davangere,banana,Warm (13-15°C),13.0,Davangere APMC,Historical max (auto),37,91.0,AUG,24.08,3.17,11.08,4.4973,8.2,7.5,26.077,1,765
+Davangere,grapes,Cold (1-3°C),1.0,Davangere APMC,SARIMAX (auto),27,5.0,MAR,28.57,3.994,27.57,6.6109,8.3,0.4,2.9943,1,1391
+Davangere,mango,Warm (13-15°C),14.0,Davangere APMC,Historical max,2,8.0,MAY,27.63,3.395,13.63,5.8173,9.16,0.8,3.1259,1,847
+Davangere,onion,Cold (1-3°C),2.0,Davangere APMC,SARIMAX (auto),67,2356.0,DEC,22.79,33.646,20.79,4.7162,5.78,136.2,84.1153,1,1596
+Davangere,pomegranate,Cool (4-6°C),5.0,Davangere APMC,SARIMAX (auto),28,30.0,JUL,24.16,7.351,19.16,3.7151,5.0,1.5,3.9584,1,1787
+Davangere,potato,Cool (4-6°C),4.0,Davangere APMC,SARIMAX (auto),72,63.0,FEB,25.45,19.524,21.45,6.2852,7.13,4.5,4.9558,1,1084
+Davangere,tomato,Warm (13-15°C),14.0,Davangere APMC,Prophet (auto),67,79.0,JAN,22.89,2.277,8.89,5.3512,12.44,9.8,38.2752,1,615
+Dharwad,onion,Cold (1-3°C),2.0,Hubballi APMC,Prophet (auto),67,7053.0,OCT,23.7,32.077,21.7,4.7154,5.78,407.7,275.8502,1,1667
+Dharwad,potato,Cool (4-6°C),4.0,Hubballi APMC,SARIMAX (auto),72,1388.0,MAR,28.51,16.576,24.51,6.3463,7.13,99.0,146.3133,1,1227
+Dharwad,tomato,Warm (13-15°C),14.0,Dharwar APMC,Historical max,2,61.0,JUL,23.87,2.144,9.87,3.9608,12.44,7.6,34.9335,1,921
+Gadag,onion,Cold (1-3°C),2.0,Gadag APMC,Historical max (auto),15,9143.0,NOV,22.59,33.985,20.59,4.4146,5.78,528.5,320.2359,1,1689
+Gadag,potato,Cool (4-6°C),4.0,Gadag APMC,Historical max,1,7.0,JUL,24.73,20.292,20.73,3.9608,7.13,0.5,0.5099,1,1663
+Gadag,tomato,Warm (13-15°C),14.0,Gadag APMC,Historical max (auto),6,24.0,JUL,24.73,2.033,10.73,3.9608,12.44,3.0,15.7607,1,1002
+Hassan,banana,Warm (13-15°C),13.0,Channarayapatna APMC,Historical max,2,1.0,MAY,25.37,2.934,12.37,5.7275,8.2,0.1,0.3458,1,671
+Hassan,onion,Cold (1-3°C),2.0,Hassan APMC,SARIMAX (auto),67,1511.0,OCT,22.78,33.663,20.78,4.6505,5.78,87.3,53.9032,1,1618
+Hassan,potato,Cool (4-6°C),4.0,Hassan APMC,Prophet (auto),72,2685.0,MAY,25.37,19.602,21.37,5.7275,7.13,191.4,208.694,1,1186
+Hassan,tomato,Warm (13-15°C),14.0,Hassan APMC,Prophet (auto),67,1421.0,JUL,22.7,2.305,8.7,4.1107,12.44,176.8,667.057,1,782
+Haveri,banana,Warm (13-15°C),13.0,Hirekerur APMC,Historical max,2,7.0,MAY,28.38,2.459,15.38,5.8173,8.2,0.6,3.5901,1,821
+Haveri,onion,Cold (1-3°C),2.0,Ranebennur APMC,Prophet (auto),41,653.0,MAR,29.08,24.394,27.08,6.6109,5.78,37.7,41.8984,1,1483
+Haveri,potato,Cool (4-6°C),4.0,Haveri APMC,Historical max,1,1.0,JUL,24.49,20.563,20.49,3.7151,7.13,0.1,0.071,1,1752
+Haveri,tomato,Warm (13-15°C),14.0,Ranebennur APMC,SARIMAX (auto),24,21.0,OCT,24.37,2.078,10.37,4.7438,12.44,2.6,12.9636,1,808
+Kalaburagi,banana,Warm (13-15°C),13.0,Kalaburagi APMC,Prophet (auto),21,211.0,JAN,22.95,3.392,9.95,4.7443,8.2,17.3,50.8166,1,651
+Kalaburagi,grapes,Cold (1-3°C),1.0,Kalaburagi APMC,Prophet (auto),36,1.0,APR,32.41,3.156,31.41,6.1752,8.3,0.1,1.0157,1,1696
+Kalaburagi,mango,Warm (13-15°C),14.0,Kalaburagi APMC,Historical max,3,15.0,MAY,31.53,2.677,17.53,5.9878,9.16,1.4,9.0564,1,1058
+Kalaburagi,onion,Cold (1-3°C),2.0,Kalaburagi APMC,Prophet (auto),60,759.0,MAR,29.7,23.644,27.7,6.1606,5.78,43.9,51.4041,1,1629
+Kalaburagi,pomegranate,Cool (4-6°C),5.0,Kalaburagi APMC,SARIMAX (auto),28,6.0,MAR,29.7,5.347,24.7,6.1606,5.0,0.3,1.3242,1,1389
+Kalaburagi,potato,Cool (4-6°C),4.0,Kalaburagi APMC,SARIMAX (auto),68,128.0,AUG,25.58,19.383,21.58,4.5181,7.13,9.1,10.1637,1,1517
+Kalaburagi,tomato,Warm (13-15°C),14.0,Kalaburagi APMC,SARIMAX (auto),67,150.0,OCT,24.04,2.122,10.04,5.0407,12.44,18.6,87.9722,1,736
+Kodagu,onion,Cold (1-3°C),2.0,Somvarpet APMC,Historical max,1,5.0,OCT,23.45,32.499,21.45,4.6314,5.78,0.3,0.1908,1,1677
+Kodagu,potato,Cool (4-6°C),4.0,Gonikappal APMC,Historical max,2,9.0,JUN,23.87,21.266,19.87,4.1783,7.13,0.6,0.5996,1,1511
+Kolar,banana,Warm (13-15°C),13.0,Malur APMC,Historical max (auto),17,22.0,FEB,22.62,3.461,9.62,6.196,8.2,1.8,5.0133,1,482
+Kolar,grapes,Cold (1-3°C),1.0,Malur APMC,SARIMAX (auto),24,100.0,JUN,24.61,5.127,23.61,5.5354,8.3,8.3,38.2737,1,1422
+Kolar,mango,Warm (13-15°C),14.0,Srinivasapur APMC,Historical max (auto),16,27548.0,JUL,24.0,4.26,10.0,4.6622,9.16,2523.4,5923.4882,3,775
+Kolar,onion,Cold (1-3°C),2.0,Malur APMC,SARIMAX (auto),66,481.0,AUG,24.08,31.461,22.08,5.0808,5.78,27.8,19.5101,1,1574
+Kolar,pomegranate,Cool (4-6°C),5.0,Bangarpet APMC,Historical max,1,4.0,JUN,24.61,7.163,19.61,5.5354,5.0,0.2,0.5474,1,1227
+Kolar,potato,Cool (4-6°C),4.0,Bangarpet APMC,Prophet (auto),72,805.0,JAN,20.62,25.434,16.62,4.8502,7.13,57.4,37.4968,1,1089
+Kolar,tomato,Warm (13-15°C),14.0,Kolar APMC,SARIMAX (auto),67,77432.0,JUL,24.0,2.127,10.0,4.6622,12.44,9632.6,45287.0722,10,793
+Koppal,onion,Cold (1-3°C),2.0,Koppal APMC,Historical max (auto),6,111.0,AUG,25.44,29.327,23.44,4.6836,5.78,6.4,5.1284,1,1813
+Koppal,potato,Cool (4-6°C),4.0,Koppal APMC,Historical max (auto),12,82.0,AUG,25.44,19.528,21.44,4.6836,7.13,5.8,6.4196,1,1454
+Koppal,tomato,Warm (13-15°C),14.0,Koppal APMC,Historical max (auto),12,58.0,AUG,25.44,1.947,11.44,4.6836,12.44,7.2,42.4018,1,903
+Mandya,banana,Warm (13-15°C),13.0,Mandya APMC,Prophet (auto),14,536.0,FEB,24.59,3.075,11.59,6.3342,8.2,43.9,165.4766,1,568
+Mandya,onion,Cold (1-3°C),2.0,Mandya APMC,SARIMAX (auto),59,14.0,MAR,27.93,25.842,25.93,6.556,5.78,0.8,0.7939,1,1432
+Mandya,potato,Cool (4-6°C),4.0,Mandya APMC,Prophet (auto),27,8.0,MAR,27.93,17.093,23.93,6.556,7.13,0.6,0.7774,1,1160
+Mandya,tomato,Warm (13-15°C),14.0,K.R. Pet APMC,SARIMAX (auto),67,33.0,JUN,24.67,2.041,10.67,5.1396,12.44,4.1,21.4243,1,767
+Mysuru,banana,Warm (13-15°C),13.0,Mysuru APMC,SARIMAX (auto),36,32.0,FEB,24.59,3.075,11.59,6.3342,8.2,2.6,9.9596,1,568
+Mysuru,grapes,Cold (1-3°C),1.0,Mysuru APMC,SARIMAX (auto),61,106.0,MAR,27.93,4.158,26.93,6.556,8.3,8.8,57.0332,1,1370
+Mysuru,mango,Warm (13-15°C),14.0,Mysuru APMC,Historical max (auto),33,437.0,MAY,26.44,3.656,12.44,5.459,9.16,40.0,136.1606,1,823
+Mysuru,onion,Cold (1-3°C),2.0,Mysuru APMC,Prophet (auto),64,772.0,JAN,22.09,34.89,20.09,5.1665,5.78,44.6,25.7089,1,1408
+Mysuru,pomegranate,Cool (4-6°C),5.0,Mysuru APMC,Prophet (auto),47,161.0,AUG,24.33,7.279,19.33,4.6924,5.0,8.0,21.3747,1,1427
+Mysuru,potato,Cool (4-6°C),4.0,Mysuru APMC,SARIMAX (auto),72,512.0,OCT,23.76,21.392,19.76,4.6796,7.13,36.5,33.7036,1,1342
+Mysuru,tomato,Warm (13-15°C),14.0,Mysuru APMC,Prophet (auto),67,175.0,NOV,22.65,2.312,8.65,4.22,12.44,21.7,81.3366,1,757
+Raichur,onion,Cold (1-3°C),2.0,Raichur APMC,SARIMAX (auto),44,5953.0,MAR,30.37,22.878,28.37,6.3717,5.78,344.1,426.6505,1,1612
+Ramanagara,banana,Warm (13-15°C),13.0,Channapatna APMC,Prophet (auto),46,92.0,APR,29.08,2.361,16.08,6.5148,8.2,7.5,51.2218,1,766
+Ramanagara,mango,Warm (13-15°C),14.0,Channapatna APMC,Historical max (auto),20,16420.0,MAY,26.85,3.563,12.85,5.5911,9.16,1504.1,5424.5387,2,830
+Ramanagara,onion,Cold (1-3°C),2.0,Ramanagara APMC,SARIMAX (auto),42,156.0,JUN,25.01,29.981,23.01,5.425,5.78,9.0,6.9189,1,1536
+Ramanagara,potato,Cool (4-6°C),4.0,Ramanagara APMC,Prophet (auto),41,23.0,APR,29.08,16.087,25.08,6.5148,7.13,1.6,2.5594,1,1223
+Ramanagara,tomato,Warm (13-15°C),14.0,Ramanagara APMC,Prophet (auto),67,271.0,JAN,21.47,2.488,7.47,5.0727,12.44,33.7,101.1959,1,545
+Shivamogga,onion,Cold (1-3°C),2.0,Shimoga APMC,SARIMAX (auto),67,92.0,MAY,26.71,27.494,24.71,5.3627,5.78,5.3,4.7786,1,1668
+Shivamogga,potato,Cool (4-6°C),4.0,Shimoga APMC,SARIMAX (auto),72,23.0,MAR,27.04,17.919,23.04,6.4588,7.13,1.6,2.0668,1,1134
+Shivamogga,tomato,Warm (13-15°C),14.0,Shimoga APMC,Prophet (auto),67,937.0,JUN,24.53,2.059,10.53,4.4299,12.44,116.5,595.7163,1,878
+Tumakuru,banana,Warm (13-15°C),13.0,Kunigal APMC,Historical max,4,43.0,MAR,27.66,2.564,14.66,6.6075,8.2,3.6,20.3479,1,689
+Tumakuru,mango,Warm (13-15°C),14.0,Gubbi APMC,Historical max (auto),11,500.0,JUN,24.61,4.1,10.61,5.4437,9.16,45.8,118.6176,1,704
+Tumakuru,onion,Cold (1-3°C),2.0,Tumakuru APMC,Prophet (auto),59,79.0,MAY,26.74,27.452,24.74,5.8335,5.78,4.6,4.1266,1,1536
+Tumakuru,potato,Cool (4-6°C),4.0,Tumakuru APMC,Historical max (auto),25,20.0,MAY,26.74,18.216,22.74,5.8335,7.13,1.4,1.7798,1,1238
+Tumakuru,tomato,Warm (13-15°C),14.0,Tumakuru APMC,Prophet (auto),31,87.0,JUL,23.91,2.138,9.91,4.3587,12.44,10.8,50.2323,1,841
+Udupi,banana,Warm (13-15°C),13.0,Udupi APMC,Historical max (auto),52,235.0,APR,28.56,2.433,15.56,6.4494,8.2,19.2,123.1136,1,749
+Udupi,grapes,Cold (1-3°C),1.0,Udupi APMC,SARIMAX (auto),34,8.0,MAY,27.36,4.308,26.36,5.46,8.3,0.7,4.1048,1,1610
+Udupi,onion,Cold (1-3°C),2.0,Udupi APMC,Prophet (auto),66,465.0,APR,28.56,25.031,26.56,6.4494,5.78,26.9,28.4947,1,1492
+Udupi,pomegranate,Cool (4-6°C),5.0,Udupi APMC,SARIMAX (auto),37,1.0,APR,28.56,5.703,23.56,6.4494,5.0,0.1,0.2618,1,1266
+Udupi,potato,Cool (4-6°C),4.0,Udupi APMC,Prophet (auto),72,129.0,JUN,25.76,19.196,21.76,4.1722,7.13,9.2,10.3998,1,1657
+Udupi,tomato,Warm (13-15°C),14.0,Udupi APMC,SARIMAX (auto),61,21.0,JAN,23.99,2.128,9.99,5.3469,12.44,2.6,12.4322,1,690
+Uttara Kannada,banana,Warm (13-15°C),13.0,Yellapur APMC,Historical max,2,0.0,FEB,25.25,2.956,12.25,6.2705,8.2,0.0,0.034,1,606
+Uttara Kannada,mango,Warm (13-15°C),14.0,Haliyala APMC,Historical max (auto),7,736.0,MAY,27.86,3.347,13.86,5.6329,9.16,67.4,279.1066,1,889
+Vijayanagara,banana,Warm (13-15°C),13.0,Hospet APMC,Prophet (auto),28,19.0,APR,30.61,2.162,17.61,6.4493,8.2,1.5,12.5716,1,847
+Vijayanagara,onion,Cold (1-3°C),2.0,Hospet APMC,Historical max (auto),34,221.0,MAY,28.65,24.918,26.65,5.9649,5.78,12.8,13.6452,1,1618
+Vijayanagara,potato,Cool (4-6°C),4.0,Hospet APMC,SARIMAX (auto),61,69.0,MAY,28.65,16.451,24.65,5.9649,7.13,4.9,7.4041,1,1313
+Vijayanagara,tomato,Warm (13-15°C),14.0,Hospet APMC,Prophet (auto),48,52.0,NOV,23.03,2.258,9.03,4.399,12.44,6.4,25.6095,1,759
+Vijayapura,onion,Cold (1-3°C),2.0,Vijayapura APMC,Prophet (auto),59,5617.0,APR,32.02,21.087,30.02,6.3791,5.78,324.7,462.1735,1,1704

@@ -42,13 +42,11 @@ AGMARKNET + NASA POWER + ICAR-CIPHET + NHB
                     ↓
              Data Preprocessing
                     ↓
-                  CUSUM
-                    ↓
-          Adaptive Forecasting
-     ┌──────────┬───────────┐
-     ↓          ↓           ↓
-  SARIMAX    Prophet    Historical Max
-     └──────────┴───────────┘
+           Adaptive Forecasting
+        ┌──────────┬───────────┐
+        ↓          ↓           ↓
+     SARIMAX    Prophet    Historical Max
+        └──────────┴───────────┘
                     ↓
        Arrhenius Shelf-Life Estimation
                     ↓

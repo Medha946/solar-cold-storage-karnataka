@@ -69,8 +69,6 @@ AGMARKNET + NASA POWER + ICAR-CIPHET + NHB
 
 → Data Preprocessing
 
-→ CUSUM
-
 → Adaptive Forecasting
 
 → Arrhenius Shelf-Life Estimation
